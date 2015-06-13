@@ -1,3 +1,20 @@
-<div id='container'>
+<div id='container' ng-controller='LinksController'>
   <!-- Your html here -->
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/links' class='index'>All Links</a></li>
+    <li><a href='#/shorten' class='create'>Shorten</a></li>
+    <li><a href="#/signin" id='auth'>Login &rarr;</a></li>
+    <li><a href="#/signup" id='authOut'>Logout</a></li>
+  </ul>
+  </div>
+  <div id='container'></div>
+    <input type="text" ng-model="search" placeholder="search">
+    <div class='info' ng-repeat="link in data.links | filter:search | orderBy: '-visits'">
+<!--       <img src='assets/redirect_icon.png'/>
+ -->      <div class='visits'>{{link.visits}} Visits</div>
+      <div class='title'>{{link.title}}</div>
+      <div class='original'>{{link.url}}</div>
+      <a href='{{link.url}}/{{code}}'>{{link.url}}/{{code}}</a>
+    </div>
 </div>
